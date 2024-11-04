@@ -11,3 +11,9 @@ class CrawlingSpider(CrawlSpider):
         Rule(LinkExtractor(allow="list")),
         Rule(LinkExtractor(allow="browse"), callback="parse_item"),
     )
+    
+    def parse_item(self, response):
+        yield {
+            "word": response.css(".bZjAAKVoBi7vttR0xUts h1::text").get(),
+
+        }
