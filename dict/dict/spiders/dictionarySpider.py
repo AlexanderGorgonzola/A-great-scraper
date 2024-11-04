@@ -13,7 +13,8 @@ class CrawlingSpider(CrawlSpider):
     )
     
     def parse_item(self, response):
-        yield {
-            "word": response.css(".bZjAAKVoBi7vttR0xUts h1::text").get(),
+        if len((response.css(".bZjAAKVoBi7vttR0xUts h1::text").get()).split()) == 1:
+            yield {
+                response.css(".bZjAAKVoBi7vttR0xUts h1::text").get(),
 
-        }
+            }
