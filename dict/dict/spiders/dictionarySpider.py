@@ -13,8 +13,8 @@ class CrawlingSpider(CrawlSpider):
     )
     
     def parse_item(self, response):
-        if len((response.css(".bZjAAKVoBi7vttR0xUts h1::text").get()).split()) == 1:
+        if (len((response.css(".bZjAAKVoBi7vttR0xUts h1::text").get()).split()) == 1) and ("." not in (response.css(".bZjAAKVoBi7vttR0xUts h1::text").get()).split()):
             yield {
-                response.css(".bZjAAKVoBi7vttR0xUts h1::text").get(),
+                response.css(".bZjAAKVoBi7vttR0xUts h1::text").get(): [response.css(".S3nX0leWTGgcyInfTEbW h2::text").get(), response.css(".NZKOFkdkcvYgD3lqOIJw div::text").get()],
 
             }
